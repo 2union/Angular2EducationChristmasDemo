@@ -1,23 +1,23 @@
-import { AppComponent } from './app.component';
+import { HelloComponent } from './tasks/hello.component';
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-describe('AppComponent', function () {
+describe('HelloComponent', function () {
   let de: DebugElement;
-  let comp: AppComponent;
-  let fixture: ComponentFixture<AppComponent>;
+  let comp: HelloComponent;
+  let fixture: ComponentFixture<HelloComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AppComponent ]
+      declarations: [ HelloComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(HelloComponent);
     comp = fixture.componentInstance;
     de = fixture.debugElement.query(By.css('h1'));
   });
