@@ -36,6 +36,18 @@
         <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
 </head>
 
 <body>
@@ -105,41 +117,7 @@
             <h2>List of loved ones</h2>
         </div><!--SECTIONHEAD END-->
 
-        <!--ADD LOVED ONES FORM START-->
-        <div class="mailchimp">
-            <form action="" method="post">
-
-                    <input type="text" value="" name="fname" id="list-add-fname" placeholder="Enter the Name" required>
-                    <input type="submit" value="Add" name="add" id="list-add-btn" class="btn btn-inverse">
-            </form>
-        </div><!--ADD LOVED ONES FORM END-->
-
-        <div class="loved-list">
-            <div class="row">
-                <div class="col-md-10 col-lg-10">Ms. Jackson</div>
-                <div class="col-md-1 col-lg-1"><i class="material-icons">delete</i></div>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-lg-10">Mr. Philips</div>
-                <div class="col-md-1 col-lg-1"><i class="material-icons">delete</i></div>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-lg-10">Cusine Susy</div>
-                <div class="col-md-1 col-lg-1"><i class="material-icons">delete</i></div>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-lg-10">Antonio</div>
-                <div class="col-md-1 col-lg-1"><i class="material-icons">delete</i></div>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-lg-10">Carl</div>
-                <div class="col-md-1 col-lg-1"><i class="material-icons">delete</i></div>
-            </div>
-            <div class="row">
-                <div class="col-md-10 col-lg-10">Lisa</div>
-                <div class="col-md-1 col-lg-1"><i class="material-icons">delete</i></div>
-            </div>
-        </div>
+        <list>List loading...</list>
     </div>
     <div id="overview" class="container clear"></div>
 

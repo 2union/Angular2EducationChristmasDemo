@@ -1,0 +1,15 @@
+<!--ADD LOVED ONES FORM START-->
+  <div class="mailchimp">
+      <form action="" method="post">
+
+              <input type="text" value="" name="fname" id="list-add-fname" placeholder="Enter the Name" required #personInput>
+              <input type="submit" value="Add" name="add" id="list-add-btn" class="btn btn-inverse" (click)=add(personInput.value)>
+      </form>
+  </div><!--ADD LOVED ONES FORM END-->
+
+<div class="loved-list">
+    <div class="row" *ngFor="let item of persons">
+        <div class="col-md-10 col-lg-10">{{ item.name }}</div>
+        <div class="col-md-1 col-lg-1"><i class="material-icons" (click)="delete(item)">delete</i></div>
+    </div>
+</div>
