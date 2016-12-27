@@ -1,0 +1,10 @@
+<div class="row congratulation-wrap" *ngFor="let person of persons">
+    <h2>Write here your congratulations to <span class="highlight">{{ person.name }}</span>.</h2>
+    <div class="congratulation-form">
+        <form action="" method="post">
+
+            <div><textarea></textarea></div>
+            <input type="submit" value="Say it" name="submit" id="wish-add-btn{{ person.id }}" class="btn btn-inverse">
+        </form>
+    </div>
+</div>

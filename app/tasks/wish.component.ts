@@ -4,22 +4,13 @@ import { Person }        from '../models/person';
 import { PersonService } from '../services/person.service';
 
 @Component({
-  selector: 'list',
-  templateUrl: './app/templates/list.html'
+  selector: 'wish',
+  templateUrl: './app/templates/wish.html'
 })
-export class ListComponent implements OnInit  {
+export class WishComponent implements OnInit  {
   persons: Person[];
 
   constructor(private personService: PersonService) { }
-
-  add(name: string = ''): boolean {
-    this.personService.create(name);
-    return false;
-  }
-
-  delete(person: Person = null): void {
-    this.personService.delete(person);
-  }
 
   ngOnInit(): void {
     this.persons = this.personService.getPersons();
