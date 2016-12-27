@@ -1,60 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Person } from '../model/person';
+import { Person }        from '../models/person';
+import { PersonService } from '../services/person.service';
 
 @Component({
   selector: 'list',
   templateUrl: './app/templates/list.html',
+  providers: [PersonService]
 })
 export class ListComponent implements OnInit  {
   persons: Person[];
 
-  lastId: number = 6;
+  constructor(private personService: PersonService) { }
 
   add(name: string = ''): boolean {
-    this.lastId++;
-    let person: Person = {
-      "id": this.lastId,
-      "name": name
-    };
-    this.persons.push(person);
+    this.personService.create(name);
     return false;
   }
 
   delete(person: Person = null): void {
-    let index = this.persons.indexOf(person);
-
-    if ( index > -1 ) {
-      this.persons.splice(index, 1);
-    }
+    this.personService.delete(person);
   }
 
   ngOnInit(): void {
-    this.persons = [
-      {
-        "id"  : 1,
-        "name": 'Ms. Jackson'
-      },
-      {
-        "id"  : 2,
-        "name": 'Mr. Philips'
-      },
-      {
-        "id"  : 3,
-        "name": 'Cusine Susy'
-      },
-      {
-        "id"  : 4,
-        "name": 'Antonio'
-      },
-      {
-        "id"  : 5,
-        "name": 'Carl'
-      },
-      {
-        "id"  : 6,
-        "name": 'Lisa'
-      }
-    ];
+    this.persons = this.personService.getPersons();
   }
 }
