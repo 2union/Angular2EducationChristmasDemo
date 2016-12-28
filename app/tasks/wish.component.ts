@@ -9,8 +9,8 @@ import { PersonService } from '../services/person.service';
   templateUrl: './app/templates/wish.html'
 })
 export class WishComponent implements OnInit  {
-  persons: Person[];
-  wishes:  Wish[];
+  persons:   Person[];
+  wishes:    Wish[];
 
   constructor(private personService: PersonService) { }
 

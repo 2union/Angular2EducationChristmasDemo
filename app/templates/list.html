@@ -1,9 +1,8 @@
 <!--ADD LOVED ONES FORM START-->
   <div class="mailchimp">
-      <form action="" method="post">
-
-              <input type="text" value="" name="fname" id="list-add-fname" placeholder="Enter the Name" required #personInput>
-              <input type="submit" value="Add" name="add" id="list-add-btn" class="btn btn-inverse" (click)=add(personInput.value)>
+      <form action="" method="post" (ngSubmit)=add() #listForm="ngForm">
+              <input type="text" [(ngModel)]="newPerson" value="" name="fname" id="list-add-fname" placeholder="Enter the Name" required>
+              <input type="submit" value="Add" name="add" id="list-add-btn" class="btn btn-inverse" [disabled]="listForm.form.invalid">
       </form>
   </div><!--ADD LOVED ONES FORM END-->
 

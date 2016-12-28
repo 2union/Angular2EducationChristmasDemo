@@ -11,6 +11,7 @@ import { PersonService } from '../services/person.service';
 export class ListComponent implements OnInit  {
   persons:      Person[];
   subscription: any;
+  newPerson:    string;
 
   constructor(private personService: PersonService) { }
 
@@ -18,11 +19,10 @@ export class ListComponent implements OnInit  {
     this.persons = this.personService.getPersons();
   }
 
-  add(name: string = ''): boolean {
-    name = name.trim();
+  add() {
+    let name = this.newPerson.trim();
     if (!name) { return false; }
     this.personService.create(name);
-    return false;
   }
 
   delete(person: Person = null): void {

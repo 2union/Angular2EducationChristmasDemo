@@ -1,5 +1,6 @@
 import { NgModule }             from '@angular/core';
 import { HttpModule}            from '@angular/http';
+import { FormsModule }          from '@angular/forms';
 import { BrowserModule }        from '@angular/platform-browser';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
@@ -12,7 +13,7 @@ import { GiftComponent }        from '../tasks/gift.component';
 import { PersonService }        from '../services/person.service';
 
 @NgModule({
-  imports:      [ BrowserModule, HttpModule, InMemoryWebApiModule.forRoot(InMemoryDataService) ],
+  imports:      [ BrowserModule, HttpModule, FormsModule, InMemoryWebApiModule.forRoot(InMemoryDataService) ],
   declarations: [ ListComponent, WishComponent, GiftComponent, CountComponent ],
   bootstrap:    [ ListComponent, WishComponent, GiftComponent, CountComponent ],
   providers:    [ PersonService ]
