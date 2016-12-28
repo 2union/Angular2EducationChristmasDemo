@@ -10,12 +10,11 @@ import { WishComponent }        from '../tasks/wish.component';
 import { CountComponent }       from '../tasks/count.component';
 import { GiftComponent }        from '../tasks/gift.component';
 import { PersonService }        from '../services/person.service';
-import { WishService }          from '../services/wish.service';
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, InMemoryWebApiModule.forRoot(InMemoryDataService) ],
   declarations: [ ListComponent, WishComponent, GiftComponent, CountComponent ],
   bootstrap:    [ ListComponent, WishComponent, GiftComponent, CountComponent ],
-  providers:    [ PersonService, WishService ]
+  providers:    [ PersonService ]
 })
 export class NyModule { }

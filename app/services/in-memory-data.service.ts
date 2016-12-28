@@ -10,15 +10,13 @@ export class InMemoryDataService implements InMemoryDbService {
       {id: 5, name: 'Carl'},
       {id: 6, name: 'Lisa'}
     ];
-    let wishes = [
-      {id: 1, person: 3, text: 'Hello my dear. I hope in next year you are get every of your dreams!'}
-    ];
+
     let gifts = [
       {id: 1, title: 'Christmas tree', text: 'Big, green. Everything what you need from christmas tree.', price: 499.5},
       {id: 2, title: 'Christmas suit', text: 'Make Santa in proud of you. Amaze yours guests in thish beautiful suit.', price: 299.9},
       {id: 3, title: 'Lights', text: 'Your house must shine on this hollydays.', price: 199.5},
       {id: 4, title: 'Santas mask', text: 'You whant be a santa? We give you chance be a Santa with Santas mask.', price: 19.8}
     ];
-    return {persons,wishes,gifts};
+    return {persons,gifts};
   }
 }
