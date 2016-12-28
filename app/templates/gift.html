@@ -1,0 +1,16 @@
+<div class="col-md-6" *ngFor="let gift of gifts">
+    <!--SMALL PRODUCT IMAGE START-->
+    <div class="col-md-4 text-center">
+        <a href="">
+            <img class="productimg" src="assets/img/product-2.jpg" alt="">
+        </a>
+
+    </div><!--PRODUCT IMAGE END-->
+
+    <!--SMALL PRODUCT DESCRIPTION START-->
+    <div class="col-md-8">
+        <h4><a href="">{{ gift.title }}</a></h4>
+        <p>{{ gift.text }}</p>
+        <p class="price">US <span class="highlight">${{ gift.price }}</span> / piece</p>
+    </div><!--SMALL PRODUCT DESCRIPTION END-->
+</div>

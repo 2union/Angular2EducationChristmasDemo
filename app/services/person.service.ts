@@ -1,56 +1,61 @@
 import { Injectable }    from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
 
 import { Person } from '../models/person';
 
 @Injectable()
 export class PersonService {
-  persons: Person[] = [
-    {
-      "id"  : 1,
-      "name": 'Ms. Jackson'
-    },
-    {
-      "id"  : 2,
-      "name": 'Mr. Philips'
-    },
-    {
-      "id"  : 3,
-      "name": 'Cusine Susy'
-    },
-    {
-      "id"  : 4,
-      "name": 'Antonio'
-    },
-    {
-      "id"  : 5,
-      "name": 'Carl'
-    },
-    {
-      "id"  : 6,
-      "name": 'Lisa'
-    }
-  ];
+  private headers           = new Headers({'Content-Type': 'application/json'});
+  private personsUrl        = 'api/persons';
+  private persons: Person[] = [];
 
-  lastId: number = 6;
+  constructor(private http: Http) {
+    this.loadPersons();
+  }
+
+  loadPersons(): void {
+    this.http.get(this.personsUrl)
+      .toPromise()
+      .then(response => {
+        let persons = response.json().data as Person[];
+        persons.map(person => this.persons.push(person));
+      })
+      .catch(this.handleError);
+  }
 
   getPersons(): Person[]{
     return this.persons;
   }
 
-  create(name: string = ''): void {
-    this.lastId++;
-    let person: Person = {
-      "id": this.lastId,
-      "name": name
-    };
-    this.persons.push(person);
+  delete(person: Person): void {
+    const url = `${this.personsUrl}/${person.id}`;
+    this.http.delete(url, {headers: this.headers})
+      .toPromise()
+      .then(() => {
+        let index = this.persons.indexOf(person);
+
+        if ( index > -1 ) {
+          this.persons.splice(index, 1);
+        }
+      })
+      .catch(this.handleError);
   }
 
-  delete(person: Person = null): void {
-    let index = this.persons.indexOf(person);
+  create(name: string): void {
+    this.http
+      .post(this.personsUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .toPromise()
+      .then(res => {
+        let person = res.json().data as Person;
+        this.persons.push(person);
+      })
+      .catch(this.handleError);
+  }
 
-    if ( index > -1 ) {
-      this.persons.splice(index, 1);
-    }
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
   }
 }

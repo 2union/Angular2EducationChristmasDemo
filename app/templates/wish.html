@@ -3,7 +3,7 @@
     <div class="congratulation-form">
         <form action="" method="post">
 
-            <div><textarea></textarea></div>
+            <div><textarea>{{ getWish(person.id).text }}</textarea></div>
             <input type="submit" value="Say it" name="submit" id="wish-add-btn{{ person.id }}" class="btn btn-inverse">
         </form>
     </div>
